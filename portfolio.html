@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Satio Interior Design</title>
+  <meta name="description" content="View the full portfolio of Satio Interior Design — spaces transformed with intention, craft, and care by Jacolene Prinsloo.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Inline styles for portfolio grid layout */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 72px;
+    }
+    .proj-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--cream);
+      aspect-ratio: 4/3;
+    }
+    .proj-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease);
+      display: block;
+    }
+    .proj-card:hover img { transform: scale(1.06); }
+    .proj-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(26,25,23,0.85) 0%,
+        rgba(26,25,23,0.2) 50%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.5s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+    .proj-card:hover .proj-card-overlay { opacity: 1; }
+    .proj-card-cat {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .proj-card-title {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.1;
+    }
+    .proj-card-cta {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(249,247,244,0.6);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .proj-card-cta::after { content: '→'; font-size: 0.9rem; }
+
+    /* Featured large card */
+    .proj-card--wide {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+    .proj-card--tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    /* Filters styles */
+    .filter-bar {
+      display: flex;
+      gap: 40px;
+      border-bottom: 1px solid var(--border-lt);
+      padding: 24px 0;
+      margin-top: 56px;
+    }
+    .filter-btn {
+      background: none;
+      border: none;
+      font-family: var(--body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      position: relative;
+      padding: 12px 0;
+      transition: color var(--t-fast);
+    }
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 1px;
+      background: var(--charcoal);
+      transform: scaleX(0);
+      transition: transform 0.3s var(--ease);
+    }
+    .filter-btn.active,
+    .filter-btn:hover { color: var(--charcoal); }
+    .filter-btn.active::after { transform: scaleX(1); }
+    .filter-btn:first-child { padding-left: 0; }
+
+    @media (max-width: 900px) {
+      .proj-grid { grid-template-columns: repeat(2, 1fr); }
+      .proj-card--wide { grid-column: span 2; }
+      .proj-card--tall { grid-row: span 1; }
+    }
+    @media (max-width: 600px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-card--wide { grid-column: span 1; aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress-bar"></div>
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-ring" id="customCursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo-link">
+          <img src="images/Logo.avif" alt="Satio Interior Design" class="header-logo-img">
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="portfolio.html" class="active">Portfolio</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a href="contact.html" class="nav-cta">Book Consultation</a>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <span class="mobile-contact">071 585 7150</span>
+  </div>
+
+  <!-- ============================================================
+       PORTFOLIO GRID VIEW
+  ============================================================ -->
+  <div id="portfolio-grid-view">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero-bg">
+        <img src="siteimages/81659e_14fd177496a54fa495532625bf67c410~mv2.png" alt="Satio Interior Design Portfolio">
+      </div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content">
+        <div class="container">
+          <span class="eyebrow eyebrow--light">Selected Works</span>
+          <h1>Portfolio</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section section--sm">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:end;">
+          <div>
+            <span class="eyebrow">The Work</span>
+            <h2 class="title--lg">"Design is an opportunity to continue telling the story."</h2>
+            <p class="caption" style="margin-top:12px; color:var(--gold);">— Tate Linden</p>
+          </div>
+          <p class="lead" style="padding-bottom:4px;">Below are selected projects where Jacolene had the privilege of collaborating with clients and professionals to turn ideas, visions, and dreams into thoughtfully designed spaces. Click any project to see the full story.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="renders">3D Renders</button>
+      </div>
+    </div>
+
+    <!-- PROJECT GRID -->
+    <main class="section section--sm" style="padding-top:0;">
+      <div class="container">
+        <div class="proj-grid" id="projGrid">
+
+          <!-- PROJECT 1: Penthouse Kitchen — wide featured -->
+          <div class="proj-card proj-card--wide fade-in" data-category="renders" data-project="penthouse" role="button" tabindex="0" aria-label="Open Penthouse Kitchen Renders project">
+            <img src="siteimages/81659e_1f25993db4c144fd92b8de97e5cab8b3~mv2.png" alt="Penthouse Kitchen Renders — Dark Modern Cabinetry">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">3D Renders · Kitchen</span>
+              <div class="proj-card-title">Penthouse Kitchen<br>Renders</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: Smith Coffee -->
+          <div class="proj-card fade-in" data-category="commercial" data-project="smith" style="transition-delay:0.1s;" role="button" tabindex="0" aria-label="Open Smith Coffee project">
+            <img src="siteimages/81659e_82277d8d32124d01a5b094fcc3cbaaff~mv2.jpg.jpeg" alt="Smith Coffee — Commercial Interior Design">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">Commercial · Coffee Shop</span>
+              <div class="proj-card-title">Smith Coffee</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: House Sergio (exterior) -->
+          <div class="proj-card fade-in" data-category="renders" data-project="sergio" style="transition-delay:0.12s;" role="button" tabindex="0" aria-label="Open House Sergio project">
+            <img src="siteimages/81659e_acab6864f6244e8b85b35b63870caefa~mv2.jpg.jpeg" alt="House Sergio — Pergola &amp; Screens Render">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">3D Renders · Patio</span>
+              <div class="proj-card-title">House Sergio</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 4: 3D Rendering Review -->
+          <div class="proj-card fade-in" data-category="renders" data-project="apt3d" style="transition-delay:0.15s;" role="button" tabindex="0" aria-label="Open 3D Rendering Review project">
+            <img src="siteimages/81659e_7345383335fb4f48b4f40f58eb7f7d25~mv2.png" alt="3D Rendering Review — Modern Open Plan Living">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">3D Renders · Residential</span>
+              <div class="proj-card-title">3D Rendering<br>Review</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 5: Punta Del Mar -->
+          <div class="proj-card proj-card--wide fade-in" data-category="residential" data-project="punta" style="transition-delay:0.18s;" role="button" tabindex="0" aria-label="Open Punta Del Mar project">
+            <img src="siteimages/81659e_9767f9f57e1545648e2b9f6dea318b7c~mv2.png" alt="Punta Del Mar — Bedroom Design">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">Residential · Interior Design</span>
+              <div class="proj-card-title">Punta Del Mar</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 6: 44 Constantia -->
+          <div class="proj-card fade-in" data-category="residential" data-project="constantia" style="transition-delay:0.22s;" role="button" tabindex="0" aria-label="Open 44 Constantia Rd project">
+            <img src="siteimages/81659e_f72c7374c42c44709b3de466895832c9~mv2.png" alt="44 Constantia Rd — Kitchen &amp; Dining">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">Residential · Kitchen</span>
+              <div class="proj-card-title">44 Constantia Rd</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 7: Hotel bedroom -->
+          <div class="proj-card fade-in" data-category="residential" data-project="hotel" style="transition-delay:0.24s;" role="button" tabindex="0" aria-label="Open Hotel Room project">
+            <img src="siteimages/81659e_00832d70508247aba7bdc8294b24d8db~mv2.png" alt="Hotel Room Render — Satio">
+            <div class="proj-card-overlay">
+              <span class="proj-card-cat">Hospitality · 3D Render</span>
+              <div class="proj-card-title">Hotel Room<br>Design</div>
+              <span class="proj-card-cta">View Project</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- CONNECT STRIP -->
+    <div class="connect-strip" style="margin-top:100px;">
+      <div class="container">
+        <div class="connect-strip-inner">
+          <div class="connect-strip-text">
+            <h3 class="title--sm" style="color:var(--ivory);">Your space could be next.</h3>
+            <p class="lead" style="color:rgba(249,247,244,0.6); font-size:0.95rem; margin-top:8px;">Ready to unlock the full potential of your interior? Let's begin with a conversation.</p>
+          </div>
+          <div class="connect-strip-actions">
+            <a href="contact.html" class="btn btn-gold btn-arrow">Start Your Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PORTFOLIO DETAIL STORY VIEW (DYNAMICALLY POPULATED)
+  ============================================================ -->
+  <div id="portfolio-detail-view"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/Logo.avif" alt="Satio Interior Design" class="footer-logo-img">
+          <p>The heart of Satio Interior Design is to create spaces that inspire, connect, and enhance the lives of the people living life in these spaces.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Get in Touch</div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Designer</span>
+            <span class="footer-contact-value">Jacolene Prinsloo</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Phone</span>
+            <span class="footer-contact-value"><a href="tel:0715857150">071 585 7150</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Email</span>
+            <span class="footer-contact-value"><a href="mailto:satiointerior@gmail.com">satiointerior@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Satio Interior Design. All rights reserved.</p>
+        <p>Crafted with care &amp; intention.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    /* ============================================================
+       PROJECT DATA — each project has images array + story
+    ============================================================ */
+    const PROJECTS = {
+      penthouse: {
+        title: 'Penthouse Kitchen Renders',
+        subtitle: 'Pretoria · Kitchen Redesign',
+        category: '3D Renders · Kitchen',
+        story_intro: 'A kitchen concept designed for a high-rise residence, balancing warm wood tones with dark satin cabinetry to create a striking centerpiece.',
+        story_details: 'The penthouse owner wanted to modernize the kitchen layout, converting a closed cooking area into an open-plan culinary stage. We introduced dark charcoal cabinetry contrast with a white marble waterfall island. Seamless handle-less cabinets, integrated appliances, and warm under-cabinet LED strip lights create depth and visual drama.',
+        story_outcome: 'The design successfully bridges the line between professional utility and soft residential luxury. These photo-realistic renderings gave the client total confidence in selecting bold, dark textures before physical installation began.',
+        tags: ['Kitchen Design', '3D Rendering', 'Waterfall Island', 'Satin Cabinetry', 'Penthouse'],
+        images: [
+          'siteimages/81659e_1f25993db4c144fd92b8de97e5cab8b3~mv2.png'
+        ]
+      },
+      smith: {
+        title: 'Smith Coffee Shop',
+        subtitle: 'Pretoria · Commercial Renovation',
+        category: 'Commercial · Coffee Shop',
+        story_intro: 'Designing a split-level extension for a popular local roastery, ensuring absolute material and atmosphere continuity between levels.',
+        story_details: 'Following a successful initial partnership, the owners of Smith Coffee approached us to design their second-level expansion. The main challenge was connecting the ground roastery floor with the quiet mezzanine lounge above. We used exposed red brick walls, custom black steel shelving, and warm timber panels to guide visitors upstairs naturally. Layered lighting controls the mood, blending natural sunlight with industrial warm bulbs.',
+        story_outcome: 'The expanded café maintains its cozy, community-driven feel while doubling capacity. The custom display shelving serves as both retail space and structural screen, framing views across the two levels.',
+        tags: ['Commercial Design', 'Mezzanine Expansion', 'Custom Joinery', 'Industrial Lighting', 'Cafe Roastery'],
+        images: [
+          'siteimages/81659e_82277d8d32124d01a5b094fcc3cbaaff~mv2.jpg.jpeg'
+        ]
+      },
+      sergio: {
+        title: 'House Sergio Outdoor Living',
+        subtitle: 'Pretoria East · Estate Living',
+        category: '3D Renders · Patio',
+        story_intro: 'Visualizing custom privacy screens and pergolas to extend the living spaces of an estate home into the outdoors.',
+        story_details: 'The client was building a new estate home and required privacy solutions for the outdoor entertainment areas. We designed custom wooden slat screens and a timber pergola system that filters light during the day. The renders study the sun\'s path to show how shadows fall across the patio, helping the client select screen density and placement.',
+        story_outcome: 'These photorealistic exterior renders allowed the homeowners to approve the sun-shading architecture in real context, ensuring the outdoor lounge connects seamlessly with the main living room.',
+        tags: ['Pergola Design', 'Privacy Screens', 'Shadow Studies', 'Estate Living', '3D Visualisation'],
+        images: [
+          'siteimages/81659e_acab6864f6244e8b85b35b63870caefa~mv2.jpg.jpeg'
+        ]
+      },
+      apt3d: {
+        title: '3D Rendering Review',
+        subtitle: 'Apartment Restoration · Staging',
+        category: '3D Renders · Residential',
+        story_intro: 'Collaborating with design specialists to stage an apartment restoration, showcasing open-plan potential to prospective buyers.',
+        story_details: 'Partnering with Michael Prinsloo and Anna Assenheim, we restored this apartment\'s main living area. To make the space market-ready, we modeled an open-plan lounge and dining design. A deep blue sectional sofa anchors the room, offset by warm wood shelving, layered track lighting, and a curated gallery wall. The secondary view shows the dining transition, showing how to maximize narrow layouts.',
+        story_outcome: 'The open-plan living and dining area was the centrepiece — pairing a deep blue sectional sofa with warm wood tones, layered lighting, and a curated art collection to create a space that felt both lived-in and aspirational. The photorealistic renders allowed the developer to list the property and secure a buyer before physical staging was completed.',
+        tags: ['Apartment Restoration', 'Virtual Staging', 'Open-Plan Living', 'Color Accents', 'Spatial Planning'],
+        images: [
+          'siteimages/81659e_7345383335fb4f48b4f40f58eb7f7d25~mv2.png',
+          'siteimages/81659e_14fd177496a54fa495532625bf67c410~mv2.png'
+        ]
+      },
+      punta: {
+        title: 'Punta Del Mar Sanctuary',
+        subtitle: 'Pretoria · Full Home Design',
+        category: 'Residential · Interior Design',
+        story_intro: 'A multi-room residential restoration focusing on quiet luxury, texture layering, and private spa-like sanctuaries.',
+        story_details: 'Punta Del Mar was designed around the concept of restorative rest. In the master bedroom, black steel frame elements contrast against soft ivory linen bedding and deep green textiles. A custom industrial-chic steel and glass partition separates the sleeping area without blocking natural light.',
+        story_outcome: 'The bathroom tells a different story — one of calm and luxury. A freestanding oval bath sits on warm teak decking surrounded by floor-to-ceiling white panelling, creating a spa-like sanctuary within the home. The final home represents a cohesive sanctuary where every room connects through a shared language of raw metal details and warm wood textures.',
+        tags: ['Bedroom Design', 'Spa Bathroom', 'Freestanding Bath', 'Black Steel Details', 'Linen Textiles'],
+        images: [
+          'siteimages/81659e_9767f9f57e1545648e2b9f6dea318b7c~mv2.png',
+          'siteimages/81659e_40655cd7e9004398bdbbd9c377ae91ba~mv2.png'
+        ]
+      },
+      constantia: {
+        title: '44 Constantia Rd',
+        subtitle: 'Cape Town · Kitchen Renovation',
+        category: 'Residential · Kitchen',
+        story_intro: 'A bright, open-plan kitchen and dining area designed to maximize views and capture natural light.',
+        story_details: 'For this Cape Town kitchen, the goal was to maximize light from garden-facing windows and create a space for entertaining. We opted for warm white cabinetry, natural timber details, and a large central island with bar stools. Clean lines and simple panels keep the aesthetic light and timeless, blending cooking and casual dining areas.',
+        story_outcome: 'The kitchen flows seamlessly into the dining and deck areas, serving as the functional and social anchor of the house. The result is a kitchen that feels simultaneously generous and intimate — perfectly suited to a family that loves to cook and gather.',
+        tags: ['Kitchen Design', 'Waterfall Island', 'Open Plan', 'Cape Town Home', 'Natural Light'],
+        images: [
+          'siteimages/81659e_f72c7374c42c44709b3de466895832c9~mv2.png'
+        ]
+      },
+      hotel: {
+        title: 'Boutique Hotel Suite',
+        subtitle: 'Hospitality · Concept Design',
+        category: 'Hospitality · 3D Render',
+        story_intro: 'A premium hospitality concept suite designed with biophilic elements and custom integrated wood paneling.',
+        story_details: 'This concept bedroom for a boutique hotel balances guest function with a warm, residential feel. We incorporated biophilic design by including a full-height glazed sliding window that opens onto a planted balcony. The room features a custom integrated oak headboard panel with built-in reading lamps and floating nightstands. Warm earth tones, soft rugs, and layered dimmable lighting create an instant sense of arrival.',
+        story_outcome: 'The suite feels spacious yet deeply cozy, showcasing how smart custom joinery can maximize boutique hotel floorplans. Warm wood joinery, layered lighting zones, and a carefully considered furniture footprint come together to create a room that feels both premium and effortlessly liveable.',
+        tags: ['Hotel Design', 'Hospitality Concept', 'Integrated Headboard', 'Biophilic Design', 'Bespoke Joinery'],
+        images: [
+          'siteimages/81659e_00832d70508247aba7bdc8294b24d8db~mv2.png',
+          'siteimages/81659e_a4cc0eaaebf148e89034ca309b635ae8~mv2.png'
+        ]
+      }
+    };
+
+    /* ============================================================
+       ROUTER LOGIC
+       ============================================================ */
+    (function () {
+      const gridView   = document.getElementById('portfolio-grid-view');
+      const detailView = document.getElementById('portfolio-detail-view');
+      const header     = document.getElementById('siteHeader');
+      const KEYS       = Object.keys(PROJECTS);
+
+      function getNextProjectKey(key) {
+        const idx = KEYS.indexOf(key);
+        if (idx === -1 || idx === KEYS.length - 1) return KEYS[0];
+        return KEYS[idx + 1];
+      }
+
+      function renderProject(key) {
+        const proj = PROJECTS[key];
+        if (!proj) return '';
+
+        const nextKey = getNextProjectKey(key);
+        const nextProj = PROJECTS[nextKey];
+
+        // Build the images section HTML based on how many images the project has
+        let imagesHTML = '';
+        if (proj.images.length === 1) {
+          imagesHTML = `
+            <section class="story-section story-section--cream" style="padding-top: 100px; padding-bottom: 100px;">
+              <div class="container">
+                <div class="story-grid">
+                  <div class="story-image-wrap fade-up visible">
+                    <img src="${proj.images[0]}" alt="${proj.title}">
+                  </div>
+                  <div class="story-text fade-up visible">
+                    <span class="eyebrow">Design Narrative</span>
+                    <h3>The Craft &amp;<br>Execution</h3>
+                    <p class="body">${proj.story_details}</p>
+                    <p class="body">${proj.story_outcome}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          `;
+        } else if (proj.images.length === 2) {
+          imagesHTML = `
+            <section class="story-section story-section--cream" style="padding-top: 100px; padding-bottom: 100px;">
+              <div class="container">
+                <div class="story-grid">
+                  <div class="story-image-wrap fade-up visible">
+                    <img src="${proj.images[0]}" alt="${proj.title} View 1">
+                  </div>
+                  <div class="story-text fade-up visible">
+                    <span class="eyebrow">Concept &amp; Brief</span>
+                    <h3>The Creative<br>Direction</h3>
+                    <p class="body">${proj.story_details}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="story-section" style="padding-top: 0; padding-bottom: 100px;">
+              <div class="container">
+                <div class="story-grid story-grid--reverse">
+                  <div class="story-image-wrap fade-up">
+                    <img src="${proj.images[1]}" alt="${proj.title} View 2">
+                  </div>
+                  <div class="story-text fade-up">
+                    <span class="eyebrow">Detailing</span>
+                    <h3>Material &amp;<br>Space Harmony</h3>
+                    <p class="body">${proj.story_outcome}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          `;
+        }
+
+        return `
+          <!-- PROJECT HERO -->
+          <section class="story-hero">
+            <div class="story-hero-bg">
+              <img src="${proj.images[0]}" alt="${proj.title}">
+            </div>
+            <div class="story-hero-overlay"></div>
+            <div class="story-hero-content">
+              <div class="container">
+                <span class="eyebrow eyebrow--light">${proj.category}</span>
+                <h1 class="story-hero-title">${proj.title}</h1>
+                <p class="story-hero-subtitle">${proj.subtitle}</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- INTRO SECTION -->
+          <section class="story-section" style="padding-top: 80px; padding-bottom: 60px;">
+            <div class="container">
+              <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <span class="eyebrow">The Vision</span>
+                <h2 class="title" style="margin-top: 12px; font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.35; font-style: italic; font-weight: 300;">
+                  "${proj.story_intro}"
+                </h2>
+                <div class="gold-rule" style="margin: 36px auto;"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- DYNAMIC IMAGES & NARRATIVE -->
+          ${imagesHTML}
+
+          <!-- SPECS / TAGS STRIP -->
+          <div class="container">
+            <div class="story-specs">
+              <div class="story-specs-inner">
+                <div>
+                  <span style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px;">Collaborators</span>
+                  <span style="font-size: 0.88rem; font-family: var(--heading); color: var(--charcoal);">Satio Interior Design Team</span>
+                </div>
+                <div>
+                  <span style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px;">Scope of Work</span>
+                  <div class="story-tags">
+                    ${proj.tags.map(t => `<span class="story-tag-pill">${t}</span>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NEXT PROJECT FOOTER NAV -->
+          <section class="story-nav-footer">
+            <div class="container">
+              <span class="story-nav-eyebrow">Next Project</span>
+              <h2 class="story-nav-title">
+                <a href="#project-${nextKey}">${nextProj.title}</a>
+              </h2>
+              <div class="story-nav-actions">
+                <a href="#all" class="story-nav-back">&#8592; Back to Grid</a>
+                <a href="contact.html" class="btn btn-gold btn-arrow" style="font-size: 0.65rem; padding: 16px 36px;">Enquire About This</a>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      function revealStoryElements() {
+        const items = document.querySelectorAll('#portfolio-detail-view .fade-up, #portfolio-detail-view .fade-in');
+        const wh = window.innerHeight;
+        items.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < wh * 0.95) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      function checkHash() {
+        const hash = window.location.hash;
+
+        if (hash.startsWith('#project-')) {
+          const key = hash.substring(9);
+          if (PROJECTS[key]) {
+            // Render story content
+            detailView.innerHTML = renderProject(key);
+
+            // Hide grid and show detail smoothly
+            gridView.classList.add('fade-out');
+            setTimeout(() => {
+              gridView.style.display = 'none';
+              detailView.style.display = 'block';
+              window.scrollTo({ top: 0 });
+
+              setTimeout(() => {
+                detailView.classList.add('fade-in');
+                revealStoryElements();
+              }, 50);
+            }, 400);
+
+            // Highlight nav link appropriately
+            document.querySelectorAll('.nav-links a').forEach(a => {
+              a.classList.toggle('active', a.getAttribute('href') === 'portfolio.html');
+            });
+            return;
+          }
+        }
+
+        // Show Grid, Hide Detail
+        detailView.classList.remove('fade-in');
+        setTimeout(() => {
+          detailView.style.display = 'none';
+          gridView.style.display = 'block';
+          
+          setTimeout(() => {
+            gridView.classList.remove('fade-out');
+            // Re-trigger scroll reveal for homepage/grid elements
+            const revealEvent = new Event('scroll');
+            window.dispatchEvent(revealEvent);
+          }, 50);
+        }, 400);
+      }
+
+      // Bind grid cards to route changes
+      document.querySelectorAll('[data-project]').forEach(card => {
+        const handler = () => {
+          window.location.hash = `#project-${card.dataset.project}`;
+        };
+        card.addEventListener('click', handler);
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+        });
+      });
+
+      // Filter grid items
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+
+          document.querySelectorAll('.proj-card').forEach((card, i) => {
+            const match = filter === 'all' || card.dataset.category === filter;
+            card.style.transition = `opacity 0.4s ${i * 0.04}s ease, transform 0.4s ${i * 0.04}s ease`;
+            if (match) {
+              card.style.display = '';
+              requestAnimationFrame(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              });
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.97)';
+              setTimeout(() => { card.style.display = 'none'; }, 400);
+            }
+          });
+        });
+      });
+
+      // Listen for hash routing
+      window.addEventListener('hashchange', checkHash);
+      window.addEventListener('load', checkHash);
+
+      // Bind scroll updates to dynamic view
+      window.addEventListener('scroll', () => {
+        if (detailView.style.display === 'block') {
+          revealStoryElements();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Satio Interior Design</title>
+  <meta name="description" content="Meet Jacolene Prinsloo — the designer behind Satio Interior Design, dedicated to creating spaces that inspire and enhance life.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── About page overrides ───────────────────────────────── */
+
+    /* Split intro: image left, story right */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      min-height: 88vh;
+      align-items: stretch;
+    }
+    .about-split-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-split-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .about-split-content {
+      padding: 120px 80px 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--ivory);
+    }
+
+    /* Philosophy pull-quote block */
+    .philosophy-block {
+      background: var(--charcoal);
+      padding: 100px 0;
+    }
+    .philosophy-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 72px;
+    }
+    .philosophy-inner .eyebrow { color: var(--gold); text-align: center; display: block; }
+    .philosophy-body {
+      font-size: 1.05rem;
+      color: rgba(249,247,244,0.65);
+      font-weight: 300;
+      line-height: 2;
+      margin-top: 24px;
+    }
+    .philosophy-body + .philosophy-body { margin-top: 18px; }
+    .philosophy-divider {
+      width: 100%; height: 1px;
+      background: rgba(200,169,126,0.25);
+      margin: 48px 0;
+    }
+    .philosophy-quote-text {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .philosophy-cite {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.65rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Acrostic redesign — horizontal rows */
+    .acrostic-section {
+      padding: var(--section) 0;
+      background: var(--cream);
+    }
+    .acrostic-intro {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+    .acrostic-list { border-top: 1px solid var(--border-lt); }
+    .acrostic-item {
+      display: grid;
+      grid-template-columns: 100px 180px 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border-lt);
+      transition: background var(--t-fast);
+    }
+    .acrostic-item:hover { background: rgba(200,169,126,0.04); }
+    .acrostic-ltr {
+      font-family: var(--display);
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      padding-left: 8px;
+    }
+    .acrostic-word-group {}
+    .acrostic-w {
+      font-family: var(--heading);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .acrostic-m {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dk);
+    }
+    .acrostic-d {
+      font-size: 0.92rem;
+      color: var(--warm-grey);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* Stats strip */
+    .stats-strip {
+      background: var(--charcoal-lt);
+      padding: 72px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .stat-item {
+      padding: 40px 36px;
+      border-right: 1px solid rgba(249,247,244,0.07);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--display);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(249,247,244,0.45);
+    }
+
+    @media (max-width: 1100px) {
+      .about-split { grid-template-columns: 1fr; min-height: auto; }
+      .about-split-img { height: 60vh; min-height: 400px; }
+      .about-split-content { padding: 72px 48px; }
+      .acrostic-intro { grid-template-columns: 1fr; gap: 40px; }
+      .acrostic-item { grid-template-columns: 72px 140px 1fr; gap: 24px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .about-split-content { padding: 48px 24px; }
+      .acrostic-item { grid-template-columns: 56px 1fr; }
+      .acrostic-word-group { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { padding: 28px 20px; }
+      .stat-num { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress-bar"></div>
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-ring" id="customCursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo-link">
+          <img src="images/Logo.avif" alt="Satio Interior Design" class="header-logo-img">
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="services.html">Services</a>
+          <a href="about.html" class="active">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a href="contact.html" class="nav-cta">Book Consultation</a>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+    <span class="mobile-contact">071 585 7150</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO SPLIT — portrait left, intro right
+  ═══════════════════════════════════════════════════════ -->
+  <div class="about-split" style="margin-top: var(--nav-h);">
+    <div class="about-split-img">
+      <img src="siteimages/89422586-398a-474d-a6eb-31cfc88984e2.jpg.jpeg" alt="Jacolene Prinsloo — Designer at Satio Interior Design">
+    </div>
+    <div class="about-split-content">
+      <span class="eyebrow">The Designer</span>
+      <h1 class="title--lg" style="margin-bottom:12px;">"Make it simple,<br>but significant."</h1>
+      <p class="caption" style="color:var(--gold); margin-bottom:40px;">— Anonymous</p>
+
+      <p class="lead" style="margin-bottom:28px;">It astonishes me how much a space influences and affects the people occupying it. The way spaces are connected, and the materials, colours, and light all carry such weight in how we function and operate every day.</p>
+
+      <div class="gold-rule"></div>
+
+      <p class="body" style="margin-bottom:20px;">I have this passion and desire in me to bring out the potential of a space through combining it with the potential and essence of the people living in these spaces.</p>
+
+      <p class="body">Satio Interior Design was born out of a longing to help clients open their eyes to the loud, yet silent voice of their surroundings, enhancing their lives through thoughtfully curated spaces.</p>
+
+      <div style="margin-top:52px; display:flex; gap:20px; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary btn-arrow">Work With Me</a>
+        <a href="portfolio.html" class="btn btn-outline">View Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       STATS STRIP
+  ═══════════════════════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Service Offerings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PHILOSOPHY — dark panel
+  ═══════════════════════════════════════════════════════ -->
+  <div class="philosophy-block">
+    <div class="philosophy-inner">
+      <span class="eyebrow">My Story</span>
+
+      <p class="philosophy-body">Have you ever paused for a moment just to take note of your surroundings? Where are you sitting now? What do you feel and how does that space around you affect your mood and your lifestyle?</p>
+
+      <p class="philosophy-body">These are the types of things that constantly go through my mind everywhere I go. Being a designer, you get to see these things — you see potential where others neglect. It is all in the finer detail, from how sharp the lighting in a space is to the colours and textures that connect people with a space.</p>
+
+      <div class="philosophy-divider"></div>
+
+      <p class="philosophy-quote-text">"The word 'satio' is Latin for sowing and a root word for the word seasons. The main goal of Satio Interior Design is to take interior spaces and breathe life into them."</p>
+      <p class="philosophy-cite">— Jacolene Prinsloo, Founder</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       WORK PREVIEW — 3 real images horizontal
+  ═══════════════════════════════════════════════════════ -->
+  <section style="padding:0; overflow:hidden;">
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); height:420px;">
+      <div style="overflow:hidden; position:relative;">
+        <img src="siteimages/81659e_9767f9f57e1545648e2b9f6dea318b7c~mv2.png" alt="Bedroom design" style="width:100%; height:100%; object-fit:cover; transition:transform 0.9s var(--ease);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(26,25,23,0.6) 0%, transparent 60%); padding:24px;">
+          <span style="font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(249,247,244,0.7);">Punta Del Mar</span>
+        </div>
+      </div>
+      <div style="overflow:hidden; position:relative;">
+        <img src="siteimages/81659e_7345383335fb4f48b4f40f58eb7f7d25~mv2.png" alt="Living space render" style="width:100%; height:100%; object-fit:cover; transition:transform 0.9s var(--ease);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(26,25,23,0.6) 0%, transparent 60%); padding:24px;">
+          <span style="font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(249,247,244,0.7);">3D Rendering Review</span>
+        </div>
+      </div>
+      <div style="overflow:hidden; position:relative;">
+        <img src="siteimages/81659e_40655cd7e9004398bdbbd9c377ae91ba~mv2.png" alt="Bathroom design" style="width:100%; height:100%; object-fit:cover; transition:transform 0.9s var(--ease);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(26,25,23,0.6) 0%, transparent 60%); padding:24px;">
+          <span style="font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(249,247,244,0.7);">Punta Del Mar · Bathroom</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SATIO ACROSTIC
+  ═══════════════════════════════════════════════════════ -->
+  <section class="acrostic-section">
+    <div class="container">
+      <div class="acrostic-intro">
+        <div>
+          <span class="eyebrow">Core Values</span>
+          <h2 class="title--lg">The SATIO<br>Philosophy</h2>
+        </div>
+        <p class="lead">We want to sow back into the lives of our clients by bringing their dreams into reality and creating spaces that enable them to live out their lives in honesty.</p>
+      </div>
+
+      <div class="acrostic-list">
+        <div class="acrostic-item">
+          <div class="acrostic-ltr">S</div>
+          <div class="acrostic-word-group">
+            <div class="acrostic-w">Soul</div>
+            <span class="acrostic-m">Essence</span>
+          </div>
+          <p class="acrostic-d">We understand that the spaces we live in are a reflection and extension of who we are, therefore spaces should build and promote authentic living.</p>
+        </div>
+
+        <div class="acrostic-item">
+          <div class="acrostic-ltr">A</div>
+          <div class="acrostic-word-group">
+            <div class="acrostic-w">Abiding</div>
+            <span class="acrostic-m">Evergreen</span>
+          </div>
+          <p class="acrostic-d">Just as the protea is evergreen, we strive to develop spaces that continually inspire and enhance the lives of the people moving through them.</p>
+        </div>
+
+        <div class="acrostic-item">
+          <div class="acrostic-ltr">T</div>
+          <div class="acrostic-word-group">
+            <div class="acrostic-w">Transcribe</div>
+            <span class="acrostic-m">Reality</span>
+          </div>
+          <p class="acrostic-d">Transcribing thoughts into reality. We collaborate with clients to relate their custom thoughts, dreams, and visions into physical structure.</p>
+        </div>
+
+        <div class="acrostic-item">
+          <div class="acrostic-ltr">I</div>
+          <div class="acrostic-word-group">
+            <div class="acrostic-w">Irenic</div>
+            <span class="acrostic-m">Pacific</span>
+          </div>
+          <p class="acrostic-d">Speaking of peace and tranquility, we aim to design spaces that add value, tranquility, and peace to our clients' quality of life.</p>
+        </div>
+
+        <div class="acrostic-item">
+          <div class="acrostic-ltr">O</div>
+          <div class="acrostic-word-group">
+            <div class="acrostic-w">Openness</div>
+            <span class="acrostic-m">Honesty</span>
+          </div>
+          <p class="acrostic-d">In every project, we aim to reflect the needs and requirements of our clients in the most honest ways possible for maximum utility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="connect-strip">
+    <div class="container">
+      <div class="connect-strip-inner">
+        <div class="connect-strip-text">
+          <h3 class="title--sm" style="color:var(--ivory);">Let's create something beautiful.</h3>
+          <p class="lead" style="color:rgba(249,247,244,0.6); font-size:0.95rem; margin-top:8px;">Reach out to Jacolene and let's discuss your design ideas.</p>
+        </div>
+        <div class="connect-strip-actions">
+          <a href="contact.html" class="btn btn-gold btn-arrow">Get in Touch</a>
+          <a href="portfolio.html" class="btn btn-outline-light">View Our Work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/Logo.avif" alt="Satio Interior Design" class="footer-logo-img">
+          <p>The heart of Satio Interior Design is to create spaces that inspire, connect, and enhance the lives of the people living life in these spaces.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Get in Touch</div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Designer</span>
+            <span class="footer-contact-value">Jacolene Prinsloo</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Phone</span>
+            <span class="footer-contact-value"><a href="tel:0715857150">071 585 7150</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-label">Email</span>
+            <span class="footer-contact-value"><a href="mailto:satiointerior@gmail.com">satiointerior@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Satio Interior Design. All rights reserved.</p>
+        <p>Crafted with care &amp; intention.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
