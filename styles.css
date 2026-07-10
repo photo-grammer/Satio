@@ -1772,10 +1772,10 @@ body.theme-blue {
   --gold-alpha-6:  rgba(36, 68, 65, 0.06);
 }
 
-/* Tint the blue logo to match the Forest Teal theme */
+/* Tint the blue logo to match the Forest Teal theme exactly */
 body.theme-blue .header-logo-img,
 body.theme-blue .footer-logo-img {
-  filter: hue-rotate(-47deg) saturate(40%) brightness(50%);
+  filter: brightness(0) saturate(100%) invert(22%) sepia(21%) saturate(1455%) hue-rotate(129deg) brightness(96%) contrast(92%);
 }
 
 /* Smooth transition for variables (color / backgrounds) */
