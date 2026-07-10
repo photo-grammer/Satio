@@ -211,7 +211,7 @@
         <div class="proj-grid" id="projGrid">
 
           <!-- PROJECT 1: Balers Way — wide featured -->
-          <div class="proj-card proj-card--wide fade-in" data-category="renders" data-project="balers" style="transition-delay:0.1s;" role="button" tabindex="0" aria-label="Open Balers Way Residence project">
+          <div class="proj-card proj-card--wide fade-in" data-category="residential" data-project="balers" style="transition-delay:0.1s;" role="button" tabindex="0" aria-label="Open Balers Way Residence project">
             <img src="Renderings/Balers Way/Image1.webp" alt="Balers Way Residence — Modern Coastal Architecture">
             <div class="proj-card-overlay">
               <span class="proj-card-cat">3D Renders · Residential</span>
@@ -221,7 +221,7 @@
           </div>
 
           <!-- PROJECT 2: Punta Del Mar 432 -->
-          <div class="proj-card fade-in" data-category="renders" data-project="punta432" style="transition-delay:0.15s;" role="button" tabindex="0" aria-label="Open Punta Del Mar 432 project">
+          <div class="proj-card fade-in" data-category="residential" data-project="punta432" style="transition-delay:0.15s;" role="button" tabindex="0" aria-label="Open Punta Del Mar 432 project">
             <img src="Renderings/Punta Del Mar 432/Image1.webp" alt="Punta Del Mar 432 — Minimalist Living Spaces">
             <div class="proj-card-overlay">
               <span class="proj-card-cat">3D Renders · Residential</span>
@@ -231,7 +231,7 @@
           </div>
 
           <!-- PROJECT 3: Punta Del Mar 525 -->
-          <div class="proj-card fade-in" data-category="renders" data-project="punta525" style="transition-delay:0.2s;" role="button" tabindex="0" aria-label="Open Punta Del Mar 525 project">
+          <div class="proj-card fade-in" data-category="residential renders" data-project="punta525" style="transition-delay:0.2s;" role="button" tabindex="0" aria-label="Open Punta Del Mar 525 project">
             <img src="Renderings/Punta Del Mar 525/Image19.webp" alt="Punta Del Mar 525 — Modern Sanctuary Bedroom">
             <div class="proj-card-overlay">
               <span class="proj-card-cat">3D Renders · Residential</span>
@@ -812,7 +812,7 @@
           const filter = btn.dataset.filter;
 
           document.querySelectorAll('.proj-card').forEach((card, i) => {
-            const match = filter === 'all' || card.dataset.category === filter;
+            const match = filter === 'all' || card.dataset.category.includes(filter);
             card.style.transition = `opacity 0.4s ${i * 0.04}s ease, transform 0.4s ${i * 0.04}s ease`;
             if (match) {
               card.style.display = '';
