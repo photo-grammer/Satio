@@ -123,38 +123,10 @@
     const interactiveEls = document.querySelectorAll('a, button, .gallery-item, .portfolio-item, .service-row, .theme-opt-btn, .theme-trigger, .mosaic-item, .lightbox-nav, .lightbox-close');
     interactiveEls.forEach(el => {
       el.addEventListener('mouseenter', () => {
-        ring.style.width  = '54px';
-        ring.style.height = '54px';
-        const theme = localStorage.getItem('satio_theme') || 'gold';
-        let color = 'rgba(200, 169, 126, 0.7)';
-        let bg = 'rgba(200, 169, 126, 0.06)';
-        if (theme === 'red') {
-          color = 'rgba(220, 38, 38, 0.7)';
-          bg = 'rgba(220, 38, 38, 0.06)';
-        } else if (theme === 'blue') {
-          color = 'rgba(37, 99, 235, 0.7)';
-          bg = 'rgba(37, 99, 235, 0.06)';
-        } else if (theme === 'yellow') {
-          color = 'rgba(217, 119, 6, 0.7)';
-          bg = 'rgba(217, 119, 6, 0.06)';
-        }
-        ring.style.borderColor = color;
-        ring.style.background  = bg;
+        ring.classList.add('hover');
       });
       el.addEventListener('mouseleave', () => {
-        ring.style.width  = '34px';
-        ring.style.height = '34px';
-        const theme = localStorage.getItem('satio_theme') || 'gold';
-        let color = 'rgba(200, 169, 126, 0.4)';
-        if (theme === 'red') {
-          color = 'rgba(220, 38, 38, 0.4)';
-        } else if (theme === 'blue') {
-          color = 'rgba(37, 99, 235, 0.4)';
-        } else if (theme === 'yellow') {
-          color = 'rgba(217, 119, 6, 0.4)';
-        }
-        ring.style.borderColor = color;
-        ring.style.background  = 'transparent';
+        ring.classList.remove('hover');
       });
     });
   }
@@ -316,10 +288,6 @@
       blue: {
         logo: 'Logo/Full Logo Blue.webp',
         class: 'theme-blue'
-      },
-      yellow: {
-        logo: 'Logo/Full Logo- Yellow .webp',
-        class: 'theme-yellow'
       }
     };
 
@@ -357,10 +325,9 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/><path d="M12 8A4 4 0 1 0 12 16A4 4 0 1 0 12 8Z" fill="currentColor"/></svg>
       </button>
       <div class="theme-options">
-        <button class="theme-opt-btn" data-theme="gold" style="background-color: #c8a97e;" title="Satio Gold"></button>
-        <button class="theme-opt-btn" data-theme="red" style="background-color: #dc2626;" title="Terracotta Red"></button>
-        <button class="theme-opt-btn" data-theme="blue" style="background-color: #2563eb;" title="Classic Blue"></button>
-        <button class="theme-opt-btn" data-theme="yellow" style="background-color: #d97706;" title="Ochre Yellow"></button>
+        <button class="theme-opt-btn" data-theme="gold" style="background-color: #bb9236;" title="Mustard Yellow"></button>
+        <button class="theme-opt-btn" data-theme="red" style="background-color: #9a572d;" title="Deep Rust"></button>
+        <button class="theme-opt-btn" data-theme="blue" style="background-color: #244441;" title="Forest Teal"></button>
       </div>
     `;
 
@@ -382,18 +349,6 @@
     switcher.querySelectorAll('.theme-opt-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         applyTheme(btn.dataset.theme);
-        const ring = document.getElementById('customCursorRing');
-        if (ring) {
-          if (btn.dataset.theme === 'red') {
-            ring.style.borderColor = 'rgba(220, 38, 38, 0.4)';
-          } else if (btn.dataset.theme === 'blue') {
-            ring.style.borderColor = 'rgba(37, 99, 235, 0.4)';
-          } else if (btn.dataset.theme === 'yellow') {
-            ring.style.borderColor = 'rgba(217, 119, 6, 0.4)';
-          } else {
-            ring.style.borderColor = 'rgba(200, 169, 126, 0.4)';
-          }
-        }
       });
     });
 

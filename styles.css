@@ -13,8 +13,15 @@
   --cream:       #f2ede6;
   --charcoal:    #1a1917;
   --charcoal-lt: #2e2b27;
-  --gold:        #c8a97e;
-  --gold-dk:     #8a7560;
+  --gold:        #bb9236; /* Brand Mustard Yellow */
+  --gold-dk:     #8a6b24; /* Darker Brand Mustard Yellow */
+  --gold-alpha-90: rgba(187, 146, 54, 0.9);
+  --gold-alpha-80: rgba(187, 146, 54, 0.8);
+  --gold-alpha-70: rgba(187, 146, 54, 0.7);
+  --gold-alpha-50: rgba(187, 146, 54, 0.5);
+  --gold-alpha-40: rgba(187, 146, 54, 0.4);
+  --gold-alpha-7:  rgba(187, 146, 54, 0.07);
+  --gold-alpha-6:  rgba(187, 146, 54, 0.06);
   --warm-grey:   #5c5850;
   --muted:       #9a9189;
   --border:      #e0d9cf;
@@ -172,7 +179,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   margin-bottom: 20px;
 }
-.eyebrow--light { color: rgba(200, 169, 126, 0.8); }
+.eyebrow--light { color: var(--gold-alpha-80); }
 
 .lead {
   font-size: 1.2rem;
@@ -220,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--display);
   font-size: clamp(12rem, 22vw, 22rem);
   font-weight: 300;
-  color: rgba(200, 169, 126, 0.07);
+  color: var(--gold-alpha-7);
   line-height: 1;
   position: absolute;
   user-select: none;
@@ -500,7 +507,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero-title em {
   font-style: italic;
-  color: rgba(200, 169, 126, 0.9);
+  color: var(--gold-alpha-90);
 }
 .hero-sub {
   font-size: 0.85rem;
@@ -557,7 +564,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-scroll-line {
   width: 1px;
   height: 48px;
-  background: rgba(200, 169, 126, 0.5);
+  background: var(--gold-alpha-50);
   position: relative;
   overflow: hidden;
 }
@@ -1622,15 +1629,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 .custom-cursor-ring {
   width: 34px; height: 34px;
-  border: 1px solid rgba(200,169,126,0.4);
+  border: 1px solid var(--gold-alpha-40);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 99998;
   transform: translate(-50%,-50%);
   opacity: 0;
+  background: transparent;
   transition: width 0.3s var(--ease), height 0.3s var(--ease),
               border-color 0.3s var(--ease), opacity 0.25s, background 0.3s var(--ease);
+}
+.custom-cursor-ring.hover {
+  width: 54px;
+  height: 54px;
+  border-color: var(--gold-alpha-70);
+  background: var(--gold-alpha-6);
 }
 
 /* Services CTA */
@@ -1736,16 +1750,26 @@ h1, h2, h3, h4, h5, h6 {
    THEME SWITCHING ACCENTS
    ========================================================================== */
 body.theme-red {
-  --gold: #dc2626;
-  --gold-dk: #b91c1c;
+  --gold: #9a572d; /* Brand Deep Rust */
+  --gold-dk: #734121;
+  --gold-alpha-90: rgba(154, 87, 45, 0.9);
+  --gold-alpha-80: rgba(154, 87, 45, 0.8);
+  --gold-alpha-70: rgba(154, 87, 45, 0.7);
+  --gold-alpha-50: rgba(154, 87, 45, 0.5);
+  --gold-alpha-40: rgba(154, 87, 45, 0.4);
+  --gold-alpha-7:  rgba(154, 87, 45, 0.07);
+  --gold-alpha-6:  rgba(154, 87, 45, 0.06);
 }
 body.theme-blue {
-  --gold: #2563eb;
-  --gold-dk: #1d4ed8;
-}
-body.theme-yellow {
-  --gold: #d97706;
-  --gold-dk: #b45309;
+  --gold: #244441; /* Brand Forest Teal */
+  --gold-dk: #19302e;
+  --gold-alpha-90: rgba(36, 68, 65, 0.9);
+  --gold-alpha-80: rgba(36, 68, 65, 0.8);
+  --gold-alpha-70: rgba(36, 68, 65, 0.7);
+  --gold-alpha-50: rgba(36, 68, 65, 0.5);
+  --gold-alpha-40: rgba(36, 68, 65, 0.4);
+  --gold-alpha-7:  rgba(36, 68, 65, 0.07);
+  --gold-alpha-6:  rgba(36, 68, 65, 0.06);
 }
 
 /* Smooth transition for variables (color / backgrounds) */
