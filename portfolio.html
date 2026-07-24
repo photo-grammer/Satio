@@ -185,13 +185,22 @@
     <!-- INTRO -->
     <section class="section section--sm">
       <div class="container">
-        <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:end;">
-          <div>
+        <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:64px; align-items:center;">
+          <div class="fade-up">
+            <div style="position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-lt); max-width: 420px;">
+              <img src="owner_photos/IMG_1855.webp" alt="Jacolene Prinsloo — Portfolio Curator & Designer" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
+              <div style="position: absolute; bottom: 12px; left: 12px; right: 12px; background: rgba(26,25,23,0.88); backdrop-filter: blur(8px); padding: 10px 14px; border-left: 3px solid var(--gold); color: var(--ivory);">
+                <div style="font-family: var(--heading); font-size: 0.88rem; color: var(--ivory);">Curated by Jacolene Prinsloo</div>
+                <div style="font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 2px;">Founder &amp; Principal Designer</div>
+              </div>
+            </div>
+          </div>
+          <div class="fade-up">
             <span class="eyebrow">The Work</span>
             <h2 class="title--lg">"Design is an opportunity to continue telling the story."</h2>
-            <p class="caption" style="margin-top:12px; color:var(--gold);">— Tate Linden</p>
+            <p class="caption" style="margin-top:8px; margin-bottom: 20px; color:var(--gold);">— Tate Linden</p>
+            <p class="lead">Below are selected projects where Jacolene had the privilege of collaborating with clients and professionals to turn ideas, visions, and dreams into thoughtfully designed spaces. Click any project to see the full story.</p>
           </div>
-          <p class="lead" style="padding-bottom:4px;">Below are selected projects where Jacolene had the privilege of collaborating with clients and professionals to turn ideas, visions, and dreams into thoughtfully designed spaces. Click any project to see the full story.</p>
         </div>
       </div>
     </section>
@@ -325,6 +334,36 @@
       </div>
     </div>
   </footer>
+
+  <!-- FLOATING OWNER WIDGET -->
+  <div class="floating-owner-widget" id="floatingOwnerWidget" title="Meet Founder & Designer Jacolene Prinsloo">
+    <div class="floating-owner-avatar">
+      <img src="owner_photos/IMG_1871.webp" alt="Jacolene Prinsloo">
+    </div>
+    <div class="floating-owner-text">
+      <span class="floating-owner-name">Jacolene Prinsloo</span>
+      <span class="floating-owner-status"><span class="status-dot"></span> Founder &amp; Designer</span>
+    </div>
+  </div>
+
+  <!-- OWNER POPUP MODAL -->
+  <div class="owner-modal-overlay" id="ownerModalOverlay">
+    <div class="owner-modal-card">
+      <div class="owner-modal-header">
+        <img src="owner_photos/IMG_1870.webp" alt="Jacolene Prinsloo — Satio Interior Design Founder">
+        <button class="owner-modal-close" id="ownerModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="owner-modal-body">
+        <span class="eyebrow">Direct Designer Access</span>
+        <h3 class="title--sm" style="margin-bottom:12px;">Meet Jacolene Prinsloo</h3>
+        <p class="body" style="margin-bottom:20px;">"At Satio Interior Design, you work directly with me from day one. I am passionate about bringing out the true potential of your space so it enriches your daily life."</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-arrow" style="font-size:0.8rem; padding:12px 20px;">Book Consultation</a>
+          <a href="about.html" class="btn btn-outline" style="font-size:0.8rem; padding:12px 20px;">Read Her Story</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="main.js"></script>
   <script>

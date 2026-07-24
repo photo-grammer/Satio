@@ -275,47 +275,86 @@
 
   // ── Brand Theme Switcher ───────────────────────────────────────────────────
   function initThemeSwitcher () {
-    const defaultTheme = 'gold';
-    const themes = {
-      gold: {
-        logo: 'Logo/Full Logo- Yellow .webp',
-        class: ''
-      },
-      red: {
-        logo: 'Logo/Full Logo - Red.webp',
-        class: 'theme-red'
-      },
-      blue: {
-        logo: 'Logo/Full Logo Blue.webp',
-        class: 'theme-blue'
-      }
-    };
+    // Clear any theme class overrides and enforce default brand palette
+    document.body.classList.remove('theme-red', 'theme-blue');
+    localStorage.removeItem('satio_theme');
 
-    const activeTheme = localStorage.getItem('satio_theme') || defaultTheme;
+    const headerLogo = document.querySelector('.header-logo-img');
+    const footerLogo = document.querySelector('.footer-logo-img');
+    if (headerLogo) headerLogo.src = 'Logo/Full Logo- Yellow .webp';
+    if (footerLogo) footerLogo.src = 'Logo/Full Logo- Yellow .webp';
+  }
 
-    function applyTheme (themeName) {
-      Object.keys(themes).forEach(t => {
-        if (themes[t].class) {
-          document.body.classList.remove(themes[t].class);
-        }
+  // ── Designer Interactive Portrait Switcher ────────────────────────────────
+  function initDesignerDeck () {
+    const thumbs = document.querySelectorAll('.designer-thumb[data-img]');
+    const mainImg = document.getElementById('designerMainImg');
+    const badgeTitle = document.getElementById('designerBadgeTitle');
+    const badgeSub = document.getElementById('designerBadgeSub');
+
+    if (!thumbs.length || !mainImg) return;
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.dataset.img;
+        const title = thumb.dataset.title || 'Jacolene Prinsloo';
+        const sub = thumb.dataset.sub || 'Founder & Designer';
+
+        if (mainImg.src.includes(src)) return;
+
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+
+        mainImg.classList.add('changing');
+
+        setTimeout(() => {
+          mainImg.src = src;
+          if (badgeTitle) badgeTitle.textContent = title;
+          if (badgeSub) badgeSub.textContent = sub;
+
+          mainImg.onload = () => {
+            mainImg.classList.remove('changing');
+          };
+          setTimeout(() => mainImg.classList.remove('changing'), 150);
+        }, 250);
       });
-      if (themes[themeName].class) {
-        document.body.classList.add(themes[themeName].class);
-      }
+    });
+  }
 
-      const headerLogo = document.querySelector('.header-logo-img');
-      const footerLogo = document.querySelector('.footer-logo-img');
-      if (headerLogo) headerLogo.src = themes[themeName].logo;
-      if (footerLogo) footerLogo.src = themes[themeName].logo;
+  // ── Floating Owner Widget & Modal Popover ───────────────────────────────────
+  function initOwnerWidget () {
+    const widget = document.getElementById('floatingOwnerWidget');
+    const modal = document.getElementById('ownerModalOverlay');
+    const closeBtn = document.getElementById('ownerModalClose');
 
-      document.querySelectorAll('.theme-opt-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.theme === themeName);
-      });
+    if (!widget || !modal) return;
 
-      localStorage.setItem('satio_theme', themeName);
+    function openModal () {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    applyTheme(activeTheme);
+    function closeModal () {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    widget.addEventListener('click', openModal);
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        closeModal();
+      });
+    }
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
@@ -327,6 +366,8 @@
     initPortfolioFilter();
     initContactForm();
     initSmoothLinks();
+    initDesignerDeck();
+    initOwnerWidget();
 
     // Mark hero-less pages as force-scrolled so header stays white
     if (header && header.classList.contains('scrolled')) {

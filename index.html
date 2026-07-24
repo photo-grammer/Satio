@@ -214,9 +214,14 @@
     <div class="container">
       <div class="split split--45-55 split-gap-lg" style="align-items: center;">
         <div class="about-designer-img fade-up">
-          <div class="about-img-wrap" style="position: relative; z-index: 1;">
-            <img src="prinsoloo.avif" alt="Jacolene Prinsloo — Founder & Lead Designer" style="width: 100%; height: auto; object-fit: cover; aspect-ratio: 4/5; display: block;">
-            <div class="special-img-accent" style="position: absolute; bottom: -16px; left: -16px; width: 60%; height: 60%; border: 1px solid var(--gold); z-index: -1;"></div>
+          <div class="designer-interactive-card">
+            <div class="designer-main-frame">
+              <img src="owner_photos/IMG_1869.webp" alt="Jacolene Prinsloo — Founder & Lead Designer" id="designerMainImg">
+              <div class="designer-caption-badge">
+                <div class="badge-title" id="designerBadgeTitle">Jacolene Prinsloo</div>
+                <div class="badge-sub" id="designerBadgeSub">Founder &amp; Principal Designer</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="about-designer-text fade-up">
@@ -308,6 +313,36 @@
         <div class="connect-strip-actions">
           <a href="tel:0715857150" class="btn btn-outline-light btn-arrow">Call Now</a>
           <a href="contact.html" class="btn btn-gold">Book Consultation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING OWNER WIDGET -->
+  <div class="floating-owner-widget" id="floatingOwnerWidget" title="Meet Founder & Designer Jacolene Prinsloo">
+    <div class="floating-owner-avatar">
+      <img src="owner_photos/IMG_1871.webp" alt="Jacolene Prinsloo">
+    </div>
+    <div class="floating-owner-text">
+      <span class="floating-owner-name">Jacolene Prinsloo</span>
+      <span class="floating-owner-status"><span class="status-dot"></span> Founder &amp; Designer</span>
+    </div>
+  </div>
+
+  <!-- OWNER POPUP MODAL -->
+  <div class="owner-modal-overlay" id="ownerModalOverlay">
+    <div class="owner-modal-card">
+      <div class="owner-modal-header">
+        <img src="owner_photos/IMG_1870.webp" alt="Jacolene Prinsloo — Satio Interior Design Founder">
+        <button class="owner-modal-close" id="ownerModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="owner-modal-body">
+        <span class="eyebrow">Direct Designer Access</span>
+        <h3 class="title--sm" style="margin-bottom:12px;">Meet Jacolene Prinsloo</h3>
+        <p class="body" style="margin-bottom:20px;">"At Satio Interior Design, you work directly with me from day one. I am passionate about bringing out the true potential of your space so it enriches your daily life."</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-arrow" style="font-size:0.8rem; padding:12px 20px;">Book Consultation</a>
+          <a href="about.html" class="btn btn-outline" style="font-size:0.8rem; padding:12px 20px;">Read Her Story</a>
         </div>
       </div>
     </div>
